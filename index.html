@@ -702,7 +702,16 @@
         init() {
             DemoApp.init();
             Telegram.WebApp.onEvent('viewportChanged', DemoAppViewport.setData);
+            
             DemoAppViewport.setData();
+
+            function testhandler () {
+              if (!this.isExpanded){
+                this.expand()
+              }
+            }
+  
+            Telegram.WebApp.onEvent('viewportChanged', testhandler)
         },
         setData() {
             document.querySelector('.viewport-border')
