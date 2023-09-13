@@ -297,6 +297,7 @@
     <button id="with_webview_btn" onclick="DemoApp.sendMessage('', true);">Send «Hello, World!» with inline webview button</button>
     <button id="data_btn" onclick="DemoApp.sendTime(true);">Send current time to bot (x10)</button>
     <button onclick="DemoApp.expand();">Expand Webview</button>
+    <button onclick="DemoApp.enableClosingConfirmation()();">EnableClosingConfirmation()</button>
     <button onclick="DemoApp.toggleMainButton(this);">Hide Main Button</button>
     <input type="text" placeholder="Input text in regular input..." id="regular_field" />
     <div
@@ -403,6 +404,10 @@
         expand() {
             Telegram.WebApp.expand();
         },
+        enableClosingConfirmation() {
+            Telegram.WebApp.enableClosingConfirmation();
+        },
+        
         close() {
             Telegram.WebApp.close();
         },
@@ -791,7 +796,7 @@
             .setAttribute('text', window.innerWidth + ' x ' + round(Telegram.WebApp.viewportHeight, 2))
         document.querySelector('.viewport-stable_border')
             .setAttribute('text', window.innerWidth + ' x ' + round(Telegram.WebApp.viewportStableHeight, 2) +
-                ' | is_expanded: ' + (Telegram.WebApp.isExpanded ? 'true' : 'false'));
+                ' | is_ed: ' + (Telegram.WebApp.isExpanded ? 'true' : 'false'));
     }
     Telegram.WebApp.setHeaderColor('secondary_bg_color');
     Telegram.WebApp.onEvent('viewportChanged', setViewportData);
